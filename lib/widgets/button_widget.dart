@@ -11,6 +11,8 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color? color = getTextColor(text, context);
+
     return Expanded(
       child: Container(
         height: double.infinity,
@@ -19,10 +21,29 @@ class ButtonWidget extends StatelessWidget {
           onPressed: () {},
           child: Text(
             text,
-            style: Theme.of(context).textTheme.button,
+            style: Theme.of(context).textTheme.button?.copyWith(
+                  color: color,
+                ),
           ),
         ),
       ),
     );
+  }
+
+  Color? getTextColor(String text, BuildContext context) {
+    switch (text) {
+      case '÷':
+      case '×':
+      case '−':
+      case '+':
+      case '=':
+        return const Color(0xFFEB6666);
+      case 'AC':
+      case '%':
+      case '⁺∕₋':
+        return const Color(0xFF24F4CD);
+      default:
+        return Theme.of(context).textTheme.button?.color;
+    }
   }
 }
