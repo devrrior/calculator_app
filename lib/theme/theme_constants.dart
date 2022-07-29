@@ -15,6 +15,7 @@ class LightTheme {
         elevation: 0,
         primary: thirdBackground,
         onPrimary: const Color.fromARGB(255, 196, 196, 196),
+        shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
@@ -44,6 +45,7 @@ class DarkTheme {
       style: ElevatedButton.styleFrom(
         elevation: 0,
         primary: thirdBackground,
+        shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
