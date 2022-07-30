@@ -14,8 +14,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       bottom: false,
       child: Column(
-        children: const <Widget>[
-          Expanded(
+        children: <Widget>[
+          const Expanded(
             child: SizedBox(
               width: double.infinity,
               child: Text('12,936'),
@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Expanded(
             flex: 2,
-            child: Buttons(),
+            child: buildButtons(context),
           )
         ],
       ),

@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'button_widget.dart';
+import '../widgets/button_widget.dart';
 
-class Buttons extends StatelessWidget {
-  const Buttons({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
+Widget buildButtons(BuildContext context) => Container(
       padding: const EdgeInsets.only(top: 36, bottom: 48, left: 30, right: 30),
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
@@ -27,8 +22,6 @@ class Buttons extends StatelessWidget {
         ],
       ),
     );
-  }
-}
 
 Widget buildButtonRow(
     String button1, String button2, String button3, String button4) {
