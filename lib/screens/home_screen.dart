@@ -1,4 +1,5 @@
 import 'package:calculator_app/utils/build_buttons.dart';
+import 'package:calculator_app/utils/build_result.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,10 +16,10 @@ class _HomeScreenState extends State<HomeScreen> {
       bottom: false,
       child: Column(
         children: <Widget>[
-          const Expanded(
+          Expanded(
             child: SizedBox(
               width: double.infinity,
-              child: Text('12,936'),
+              child: buildResult(context),
             ),
           ),
           Expanded(

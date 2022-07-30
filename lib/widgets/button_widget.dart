@@ -21,7 +21,7 @@ class ButtonWidget extends StatelessWidget {
           onPressed: () {},
           child: Text(
             text,
-            style: Theme.of(context).textTheme.button?.copyWith(
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: color,
                 ),
           ),
@@ -43,7 +43,7 @@ class ButtonWidget extends StatelessWidget {
       case '⁺∕₋':
         return const Color(0xFF24F4CD);
       default:
-        return Theme.of(context).textTheme.button?.color;
+        return Theme.of(context).textTheme.bodyMedium?.color;
     }
   }
 }
