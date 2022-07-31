@@ -48,7 +48,7 @@ class DarkTheme {
   static const secondBackground = Color(0xFF292D36);
   static const thirdBackground = Color(0xFF272B33);
   static const fontButtonColor = Color(0xFFF1F1F1);
-  static const fontResultColor = Color(0xFF292D36);
+  static const fontResultColor = Color(0xFFFFFFFF);
 
   static final ThemeData themeData = ThemeData(
     brightness: Brightness.dark,
