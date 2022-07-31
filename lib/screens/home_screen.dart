@@ -1,30 +1,26 @@
-import 'package:calculator_app/utils/build_buttons.dart';
-import 'package:calculator_app/utils/build_result.dart';
+import 'package:calculator_app/widgets/buttons_widget.dart';
+import 'package:calculator_app/widgets/result_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SafeArea(
       bottom: false,
       child: Column(
-        children: <Widget>[
+        children: const <Widget>[
           Expanded(
             child: SizedBox(
               width: double.infinity,
-              child: buildResult(context),
+              child: ResultWidget(),
             ),
           ),
           Expanded(
             flex: 2,
-            child: buildButtons(context),
+            child: ButtonsWidget(),
           )
         ],
       ),

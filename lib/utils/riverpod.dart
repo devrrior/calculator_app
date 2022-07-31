@@ -1,19 +1,80 @@
+import 'package:calculator_app/utils/operator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 import '../model/calculator.dart';
 
 class CalculatorNotifier extends StateNotifier<Calculator> {
   CalculatorNotifier() : super(const Calculator());
+  void delete() {
+    final equation = state.equation;
+
+    if (equation.isNotEmpty) {
+      final newEquation = equation.substring(0, equation.length - 1);
+
+      if (newEquation.isEmpty) {
+        reset();
+      } else {
+        state = state.copy(equation: newEquation);
+        calculate();
+      }
+    }
+  }
+
+  void reset() {
+    const equation = '0';
+    const result = '0';
+    state = state.copy(equation: equation, result: result);
+  }
+
+  void resetResult() {
+    final equation = state.result;
+
+    state = state.copy(
+      equation: equation,
+      shouldAppend: false,
+    );
+  }
 
   void append(String buttonText) {
     final equation = () {
-      return state.equation == '0' ? buttonText : state.equation + buttonText;
+      if (Operator.isOperator(buttonText) &&
+          Operator.isOperatorAtEnd(state.equation)) {
+        final newEquation =
+            state.equation.substring(0, state.equation.length - 1);
+
+        return newEquation + buttonText;
+      } else if (state.shouldAppend) {
+        return state.equation == '0' ? buttonText : state.equation + buttonText;
+      } else {
+        return Operator.isOperator(buttonText)
+            ? state.equation + buttonText
+            : buttonText;
+      }
     }();
 
-    state = state.copy(equation: equation);
+    state = state.copy(equation: equation, shouldAppend: true);
+    calculate();
+  }
+
+  void equals() {
+    calculate();
+    resetResult();
+  }
+
+  void calculate() {
+    final expression = state.equation.replaceAll('⨯', '*').replaceAll('÷', '/');
+
+    try {
+      final exp = Parser().parse(expression);
+      final model = ContextModel();
+
+      final result = '${exp.evaluate(EvaluationType.REAL, model)}';
+      state = state.copy(result: result);
+    } catch (e) {}
   }
 }
 
-final calculatorNotifier =
+final calculatorProvider =
     StateNotifierProvider<CalculatorNotifier, Calculator>(
         (ref) => CalculatorNotifier());

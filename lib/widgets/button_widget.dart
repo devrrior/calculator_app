@@ -4,27 +4,38 @@ class ButtonWidget extends StatelessWidget {
   // widget receive a text and a callback function
   const ButtonWidget({
     Key? key,
-    required this.text,
+    required this.buttonText,
+    required this.onClicked,
+    required this.onClickedLong,
   }) : super(key: key);
 
-  final String text;
+  final String buttonText;
+  final VoidCallback onClicked;
+  final VoidCallback onClickedLong;
 
   @override
   Widget build(BuildContext context) {
-    final Color? color = getTextColor(text, context);
+    final Color? color = getTextColor(buttonText, context);
 
     return Expanded(
       child: Container(
         height: double.infinity,
         margin: const EdgeInsets.all(6),
         child: ElevatedButton(
-          onPressed: () {},
-          child: Text(
-            text,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+          onPressed: onClicked,
+          onLongPress: onClickedLong,
+          child: buttonText != 'del'
+              ? Text(
+                  buttonText,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: color,
+                      ),
+                )
+              : Icon(
+                  Icons.backspace,
+                  size: 24,
                   color: color,
                 ),
-          ),
         ),
       ),
     );
@@ -34,7 +45,7 @@ class ButtonWidget extends StatelessWidget {
     switch (text) {
       case '÷':
       case '×':
-      case '−':
+      case '-':
       case '+':
       case '=':
         return const Color(0xFFEB6666);

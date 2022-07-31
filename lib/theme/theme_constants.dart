@@ -32,6 +32,7 @@ class LightTheme {
         fontSize: 26,
         fontWeight: FontWeight.bold,
         color: fontButtonColor,
+        height: 1,
       ),
       bodyMedium: TextStyle(
         fontSize: 24,
@@ -73,6 +74,7 @@ class DarkTheme {
         fontSize: 26,
         fontWeight: FontWeight.bold,
         color: fontButtonColor,
+        height: 1,
       ),
       bodyMedium: TextStyle(
         color: fontButtonColor,
