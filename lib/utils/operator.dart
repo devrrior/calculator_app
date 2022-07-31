@@ -4,7 +4,7 @@ class Operator {
       '+',
       '-',
       '÷',
-      '×',
+      '⨯',
       '.',
       if (hasEquals) ...['=']
     ];

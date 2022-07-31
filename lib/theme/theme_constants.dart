@@ -35,9 +35,10 @@ class LightTheme {
         height: 1,
       ),
       bodyMedium: TextStyle(
-        fontSize: 24,
+        fontSize: 26,
         fontWeight: FontWeight.bold,
         color: fontButtonColor,
+        height: 1,
       ),
     ),
   );
@@ -78,8 +79,9 @@ class DarkTheme {
       ),
       bodyMedium: TextStyle(
         color: fontButtonColor,
-        fontSize: 24,
+        fontSize: 26,
         fontWeight: FontWeight.bold,
+        height: 1,
       ),
     ),
   );

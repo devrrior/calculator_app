@@ -44,7 +44,7 @@ class ButtonWidget extends StatelessWidget {
   Color? getTextColor(String text, BuildContext context) {
     switch (text) {
       case '÷':
-      case '×':
+      case '⨯':
       case '-':
       case '+':
       case '=':

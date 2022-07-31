@@ -28,7 +28,7 @@ class ButtonsWidget extends StatelessWidget {
             buttonText1: '7',
             buttonText2: '8',
             buttonText3: '9',
-            buttonText4: '×',
+            buttonText4: '⨯',
           ),
           ButtonsRowWidget(
             buttonText1: '4',
